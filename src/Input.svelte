@@ -1,14 +1,19 @@
 <script>
-    //variable
     export let variable="";
-    export let variableCorrect;
     export let placeholdervariable;
     export let labelvariable="variable";
+    let classButoon="";
+
+    
 
 
     export let verifierLongueur;
     function verifier(){
-        variableCorrect=verifierLongueur(variable);
+        if(verifierLongueur(variable)){
+            classButoon="is-valid";
+        }else{
+            classButoon="is-invalid";
+        }
     }
 
     export let modifTitle;
@@ -32,8 +37,6 @@
 
 <div class="form-group">
 <label class="form-control-label" for="inputnom" id="nomLabel">{labelvariable}</label>
-<input id="inputnom" bind:value={variable}  on:keyup={verifetChangement} class="form-control {variableCorrect ? 'is-valid' : 'is-invalid' }"  placeholder="{placeholdervariable}">
+<input id="inputnom" bind:value={variable}  on:keyup={verifetChangement} class="form-control {classButoon}"  placeholder="{placeholdervariable}">
 <div class="invalid-feedback">La longueur doit etre au moins de 2</div>
 </div>
-
-

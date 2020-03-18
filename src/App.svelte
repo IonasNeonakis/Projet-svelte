@@ -1,5 +1,6 @@
 <script>
 	import Input from './Input.svelte';
+	import DateDeNaissance from './DateDeNaissance.svelte'
 
 	const regTel =/^([0-9][0-9] ?){5}$/ ; 
 
@@ -32,3 +33,5 @@
 <Input placeholdervariable={"Entrez un prenom"} labelvariable={"Prenom"} verifierLongueur={veriflongueur2} />
 
 <Input placeholdervariable={"Entrez un numero de Téléphone"} labelvariable={"N° téléphone"} verifierLongueur={telValidator} />
+
+<DateDeNaissance/>
