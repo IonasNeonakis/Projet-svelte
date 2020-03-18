@@ -1,16 +1,17 @@
 <script>
-	export let name;
+	import HautDePage from './HautDePage.svelte';
+
+
+	function verif(name){
+		if (name.length<2){
+			return false;
+		}else{
+			return true;
+		}
+	};
+
 </script>
 
-<svelte:head>
-	<link rel="stylesheet" href="bootstrap.min.css">
-</svelte:head>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
 
-<body>
-<button type="button" class="btn btn-primary">Primary</button>
-</body>
+<HautDePage placeholdernom={"Entrez un nom"} labelnom={"Nom"} verifierLongueur={verif}/>
