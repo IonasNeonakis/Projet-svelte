@@ -3,28 +3,37 @@
     import Datepicker from 'svelte-calendar';
     import { formatDate } from 'timeUtils';
 
-    const minDate= new Date(1899,12,1);
-    const maxDate= new Date();
-
-    let selectedDate= new Date();
-
-    let age=maxDate.getFullYear() - selectedDate.getFullYear();
+    const minDate = new Date(1899,12,1);
+    const maxDate = new Date();
 
 
-    const affichageDateSelected="Choisir date d'anniversaire";
+    export let dateNaissance=new Date();
+    export let userHasChosenDate=false;
 
-    let affichageDateUnselected="Né le #{j} #{F} #{Y} ("+age+" ans)";
 
-    let userHasChosenDate;
+    let selectedDate;
+    
+    let age;
+
+
+
+
+    const affichageDateSelected = "Choisir date d'anniversaire";
+
+    let affichageDateUnselected = "Né le #{j} #{F} #{Y} (" + age + " ans)";
+
 
     function getAge(){
-        age=maxDate.getFullYear() - selectedDate.getFullYear();
-        affichageDateUnselected="Né le #{j} #{F} #{Y} ("+age+" ans)";
+        let today = new Date();
+	    age = today.getFullYear() - selectedDate.getFullYear();
+	    let m = today.getMonth() - selectedDate.getMonth();
+	    if (m < 0 || (m === 0 && today.getDate() < selectedDate.getDate())) {
+		    age = age - 1;
+        }
+        dateNaissance = selectedDate;
+        affichageDateUnselected = "Né le #{j} #{F} #{Y} (" + age + " ans)";
     }
 
-    console.log(maxDate.getFullYear())
-    console.log(selectedDate.getFullYear())
-    
 
     const daysOfWeek = [
         ['Dimanche', 'Dim'],
